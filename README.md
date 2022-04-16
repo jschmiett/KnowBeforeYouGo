@@ -1,1 +1,2 @@
 # Project1Group2
+I like JavaScript because it challenges my knowledge of functions
