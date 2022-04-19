@@ -16,4 +16,3 @@ https://test.api.amadeus.com/v2/shopping/flight-offers
 
 Rough breakdown of tasks:
 
-
