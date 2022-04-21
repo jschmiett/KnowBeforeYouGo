@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/script.js"></script>
-    <title>World's Grossest Air</title>
+  <head>    
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>World Air</title>
   </head>
-<body>
-  <div class="page">
-  <header class="header">Welcome to the Current Air Pollution!</header>
+<body class="page">
+  <nav id="bar">
+    <p id="wwa">Welcome to World Air</p>
+  </nav>
+  <div id="firstSec">
+    <header id="knowBef">Know Before You Go!</header>
+    <img id="travelPic" src="http://clipart-library.com/images/qcBobErbi.jpg" alt="Famous landmarks through a breaking wave">
+  <div>
+  <header class="curCities">World's Current Air Pollution</header>
     <div id="current">Currently,</div>
-    
+  </div>
     <div class="location">The World's most polluted air is:</div>
     <button onclick="mostPolluted()">Click to Find Out!</button>
     <div id="generatedMost"></div>
@@ -25,6 +32,8 @@
     </div>
 </div>
 </body>
+<script src="./assets/js/script.js"></script>
+</html>
 
 
 <!-- Local language, currency and the exchange rate, plane ticket options + suggestions of nearby cities with cleaner Air -->
