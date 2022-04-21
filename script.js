@@ -8,5 +8,3 @@ function mostPolluted() {
   function leastPolluted() {
     document.getElementById("generatedLeast").innerHTML = "Generated Least Polluted City";
   }
-
-  console.log("Jenn testing git push")
