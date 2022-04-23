@@ -5,22 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/UserCity.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1 id="userCityInput"></h1>
-    <div id="airQAPI">
-        <p>Air Quality</p>
-    </div>
     <div id="basicInfoAPI">
-
+        <input type="text" id="cityInput">
+        <button id="searchButton">I'm ready to know before I go!</button>
+    </div>
+    <div id="cityResults">
+        <h2>Air Quality</h2>
+        <div id = airQualityResults></div>
+        <h2>Local Currency</h2>
+        <div id = localCurrency></div>
+        <h2>Exchange Rate</h2>
+        <div id = exchangeRate></div>
     </div>
 
-
+    <div>
     <button id="wikiLink">Want to learn more?</button>
+    </div>
 
-    <h2>Ready to book your trip?</h2>
+    <h2>Ready to price out your airfare?</h2>
+        <p>We're not a booking company, but we can help you budget for your trip by giving you 5 examples of flights you could book to get to you want to fly to.</p>
+        <div id="airfareResults"></div>
+
+    
+
+
+
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/UserCity.js"></script>
+    <script src="./assets/js/backend.js"></script>
 </body>
 </html>

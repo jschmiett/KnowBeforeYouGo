@@ -8,7 +8,6 @@ var currencyApiUrl = 'https://countriesnow.space/api/v0.1/countries/currency';
 var currencyExchangeApiUrl = 'https://api.api-ninjas.com/v1/convertcurrency';
 var currencyExchangeApiKey = 'zoACBAtFNJtKJAL8Nl7DlA==nqcwIFNykYOqSb4K';
 
-var city = 'Shanghai';
 var localCurrency = 'USD';
 
 
@@ -73,23 +72,13 @@ function getAQI(city, onSuccess, onFailure){
 }
 
 function getCurrencyExchangeRate(city, onSuccess, onFailure){
+    console.log(city);
     getCountry(city)
-    .then(country=>{return getCurrency(country)})
-    .then(cur => {return getExchangeRate(localCurrency, cur)})
+    .then(country=>{console.log(country); return getCurrency(country)})
+    .then(cur => {console.log(cur); return getExchangeRate(localCurrency, cur)})
     .then(onSuccess)
     .catch(onFailure);  
 }
 
 
-var aqiElement = document.getElementById('aqi');
-var exchangeElement = document.getElementById('exchange');
 
-getAQI(city, aqi => {
-        aqiElement.textContent = `AQI in ${city} is ${aqi}`;
-    },
-    ()=>{console.log('fetch call failed!')});
-
-getCurrencyExchangeRate(city, json=>{
-        exchangeElement.textContent = `${json.old_amount} ${json.old_currency} = ${json.new_amount} ${json.new_currency}`;
-    }, 
-    ()=>{console.log('fetch call failed!')});
