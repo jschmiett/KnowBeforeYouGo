@@ -5,32 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Grape+Nuts&display=swap" rel="stylesheet">
     <title>World Air</title>
   </head>
 <body class="page">
   <nav id="bar">
-    <p id="wwa">Welcome to World Air</p>
-  </nav>
-  <div id="firstSec">
-    <header id="knowBef">Know Before You Go!</header>
-    <img id="travelPic" src="http://clipart-library.com/images/qcBobErbi.jpg" alt="Famous landmarks through a breaking wave">
-  <div>
-  <header class="curCities">World's Current Air Pollution</header>
-    <div id="current">Currently,</div>
-  </div>
-    <div class="location">The World's most polluted air is:</div>
-    <button onclick="mostPolluted()">Click to Find Out!</button>
-    <div id="generatedMost"></div>
-
-    <div class="location">The World's cleanest air is:</div>
-    <button onclick="leastPolluted()">Click to Find Out!</button>
-    <div id="generatedLeast"></div>
-
-    <div id="yourCity">Enter the City you'd like to visit for current air quality:
-        <input type="text">
-        <button>Whats that air quality?</button>
+    <div id="logo">
+          <h1 id="wwa">know before</h1>
+          <p id="uGo">uGo</p>
     </div>
+      <ul class="navigation">
+        <li>d</li>
+        <li id="jenS">Jennifer Schmiett</li>
+        <li id="javiar">Javiar Sardiñas</li>
+        <li id="vinM">Vincent Monaco</li>
+      </ul>
+  </nav>
+<section id="firstSec">
+  <div class="fire">
+    <h3 id="know">know before</h3>
+    <h3 id="goGo">uGo</h3>
+  </div>
+</section>
+
+<table class="grid">
+  <tr>
+   <td id="oneClean">Cleanest</td>
+   <td id="twoClean">2nd Cleanest</td>
+   <td id="threeClean">3rd Cleanest</td>
+  </tr>
+  <tr>
+   <td id="oneDirty">Most Polluted</td>
+   <td id="twoDirty">2nd Polluted</td>
+   <td id="threeDirty">3rd Polluted</td>
+  </tr>
+</table>
+
+<section id="yourCity">air quality of your next destination:
+  <div class="box">
+    <form name="search">
+        <input type="text" class="input" name="txt" 
+        onmouseout="document.search.txt.value = ''">
+    </form>
+        <i class="fas fa-search"></i>
 </div>
+</section>
 </body>
 <script src="./assets/js/script.js"></script>
 </html>
