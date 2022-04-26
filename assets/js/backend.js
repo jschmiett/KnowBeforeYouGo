@@ -17,6 +17,7 @@ var flightApiClientId = 'dQkp0EighixL15ZTeBzqq4k6pPuVuARd';
 var flightApiClientSecret = '6tgvlbk4vllVwOrT';
 
 var city = 'Shanghai';
+
 var localCurrency = 'USD';
 var localAirportCode = 'AUS';
 
@@ -82,9 +83,10 @@ function getAQI(city, onSuccess, onFailure){
 }
 
 function getCurrencyExchangeRate(city, onSuccess, onFailure){
+    console.log(city);
     getCountry(city)
-    .then(country=>{return getCurrency(country)})
-    .then(cur => {return getExchangeRate(localCurrency, cur)})
+    .then(country=>{console.log(country); return getCurrency(country)})
+    .then(cur => {console.log(cur); return getExchangeRate(localCurrency, cur)})
     .then(onSuccess)
     .catch(onFailure);  
 }
@@ -101,10 +103,6 @@ function getPlanePrices(data, onSuccess, onFailure){
     .then(response => {return response.json();})
     .then(json => {onSuccess(json.data);});
 }
-
-
-var aqiElement = document.getElementById('aqi');
-var exchangeElement = document.getElementById('exchange');
 
 getAQI(city, aqi => {
         aqiElement.textContent = `AQI in ${city} is ${aqi}`;
@@ -153,3 +151,4 @@ function renewAccessToken(){
 }
 
 renewAccessToken();
+

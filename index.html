@@ -5,32 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Grape+Nuts&display=swap" rel="stylesheet">
     <title>World Air</title>
   </head>
 <body class="page">
   <nav id="bar">
-    <p id="wwa">Welcome to World Air</p>
-  </nav>
-  <div id="firstSec">
-    <header id="knowBef">Know Before You Go!</header>
-    <img id="travelPic" src="http://clipart-library.com/images/qcBobErbi.jpg" alt="Famous landmarks through a breaking wave">
-  <div>
-  <header class="curCities">World's Current Air Pollution</header>
-    <div id="current">Currently,</div>
-  </div>
-    <div class="location">The World's most polluted air is:</div>
-    <button onclick="mostPolluted()">Click to Find Out!</button>
-    <div id="generatedMost"></div>
-
-    <div class="location">The World's cleanest air is:</div>
-    <button onclick="leastPolluted()">Click to Find Out!</button>
-    <div id="generatedLeast"></div>
-
-    <div id="yourCity">Enter the City you'd like to visit for current air quality:
-        <input type="text">
-        <button>Whats that air quality?</button>
+    <div id="logo">
+          <h1 id="wwa">know before</h1>
+          <p id="uGo">uGo</p>
     </div>
+      <ul class="navigation">
+        <li id="devBy">dev by</li>
+        <li id="jenS">jennifer schmiett</li>
+        <li id="javiar">javier sardiñas</li>
+        <li id="vinM">vincent monaco</li>
+      </ul>
+  </nav>
+<section id="firstSec">
+  <div class="fire">
+    <h3 id="know">know before</h3>
+    <h3 id="goGo">uGo</h3>
+  </div>
+  <div class="fireTwo">
+    <p id="importance">Short- and/or long-term exposure to air pollution has been associated with a wide range of human health effects including increased respiratory symptoms, hospitalization for heart or lung diseases, and even premature death. Hazardous (or toxic) air pollutants may cause cancer or other serious health effects, such as reproductive effects or birth defects.</p>
+  </div>
+</section>
+
+<table class="grid">
+  <tr>
+   <td id="oneClean">Cleanest</td>
+   <td id="twoClean">2nd Cleanest</td>
+   <td id="threeClean">3rd Cleanest</td>
+  </tr>
+  <tr>
+   <td id="oneDirty">Most Polluted</td>
+   <td id="twoDirty">2nd Polluted</td>
+   <td id="threeDirty">3rd Polluted</td>
+  </tr>
+</table>
+
+<section id="yourCity">
+  <div id="destination">current air quality of your next destination:</div>
+  <form action="./assets/js/script.js" id="form" autocomplete="off">
+    <input type="text" id="input" city="cityInput">
+  </form>
+</section>
+
+<div id="jennMerge">
+  
 </div>
+
 </body>
 <script src="./assets/js/script.js"></script>
 </html>
