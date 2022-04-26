@@ -75,7 +75,7 @@ html{
     border-collapse:collapse;
     grid-template-columns: 1fr;
     grid-auto-rows: 50vh 50vh;
-    text-align: center;
+    justify-content: center;
 }
 
 .fire{
@@ -159,14 +159,21 @@ h3 {
     font-size: 5rem;
     margin: 10px 0;
 }
+.fireTwo{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8vh;
+}
 
 #importance{
     width: 80%;
     font-family: 'Akshar', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: white;
     font-weight: bold;
-    justify-self: center;
 }
 
 .grid{
@@ -229,12 +236,11 @@ h3 {
 }
 
 #yourCity{
-    display: flexbox;
+    display: flex;
+    flex-flow: column wrap;
     height: 100vh;
     width: 100%;
-    border-collapse:collapse;
-    grid-template-columns: 1fr;
-    grid-auto-rows: 50vh 50vh;
+    grid-auto-rows: 40vh 30vh 30vh;
     background-color: aqua;
 }
 #destination{
@@ -245,14 +251,14 @@ h3 {
     text-align: center;
     padding-top: 30vh;
 }
-#form{
+#basicInfoAPI{
     position: relative;
     text-align: center;
     align-self: center;
     padding-top: 4vh;
 }
 
-#input {
+#cityInput {
     height: 10vh;
     width: 50vw;
     background: none;
@@ -264,6 +270,26 @@ h3 {
     align-self: center;
     justify-self: center;
 }
-#input:focus{
+#cityInput:focus{
     outline: none;
+}
+button{
+    position: relative;
+    align-self: center;
+    justify-self: center;
+    height: 10vh;
+    width: 34vw;
+    background: none;
+    border: solid 6px white;
+    border-radius: 2rem;
+    font-family: 'Akshar', sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size:2em;
+}
+
+#seeIfthisWorks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
