@@ -19,6 +19,7 @@ var flightApiClientSecret = '6tgvlbk4vllVwOrT';
 var accessTokenExpirationTime = 25*60*1000 //milliseconds
 
 var city = 'Shanghai';
+
 var localCurrency = 'USD';
 var localAirportCode = 'AUS';
 var dest = 'BKK';
@@ -89,9 +90,10 @@ function getAQI(city, onSuccess, onFailure){
 }
 
 function getCurrencyExchangeRate(city, onSuccess, onFailure){
+    console.log(city);
     getCountry(city)
-    .then(country=>{return getCurrency(country)})
-    .then(cur => {return getExchangeRate(localCurrency, cur)})
+    .then(country=>{console.log(country); return getCurrency(country)})
+    .then(cur => {console.log(cur); return getExchangeRate(localCurrency, cur)})
     .then(onSuccess)
     .catch(onFailure);  
 }
