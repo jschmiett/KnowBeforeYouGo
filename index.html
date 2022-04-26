@@ -15,16 +15,19 @@
           <p id="uGo">uGo</p>
     </div>
       <ul class="navigation">
-        <li>d</li>
-        <li id="jenS">Jennifer Schmiett</li>
-        <li id="javiar">Javiar Sardiñas</li>
-        <li id="vinM">Vincent Monaco</li>
+        <li id="devBy">dev by</li>
+        <li id="jenS">jennifer schmiett</li>
+        <li id="javiar">javier sardiñas</li>
+        <li id="vinM">vincent monaco</li>
       </ul>
   </nav>
 <section id="firstSec">
   <div class="fire">
     <h3 id="know">know before</h3>
     <h3 id="goGo">uGo</h3>
+  </div>
+  <div class="fireTwo">
+    <p id="importance">Short- and/or long-term exposure to air pollution has been associated with a wide range of human health effects including increased respiratory symptoms, hospitalization for heart or lung diseases, and even premature death. Hazardous (or toxic) air pollutants may cause cancer or other serious health effects, such as reproductive effects or birth defects.</p>
   </div>
 </section>
 
@@ -41,15 +44,17 @@
   </tr>
 </table>
 
-<section id="yourCity">air quality of your next destination:
-  <div class="box">
-    <form name="search">
-        <input type="text" class="input" name="txt" 
-        onmouseout="document.search.txt.value = ''">
-    </form>
-        <i class="fas fa-search"></i>
-</div>
+<section id="yourCity">
+  <div id="destination">current air quality of your next destination:</div>
+  <form action="./assets/js/script.js" id="form" autocomplete="off">
+    <input type="text" id="input" city="cityInput">
+  </form>
 </section>
+
+<div id="jennMerge">
+  
+</div>
+
 </body>
 <script src="./assets/js/script.js"></script>
 </html>
