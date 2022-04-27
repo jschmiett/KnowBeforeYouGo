@@ -43,11 +43,19 @@ function financialInfo() {
     ()=>{console.log('fetch call failed!')});   
 }
 
+//Input Airfare API function here
+// function airfairBudget() {
+//     console.log("airplane prices");
+//     airfareAPIResults.innerHTML = "Hello World";
+
+// }
+
 // userCity.addEventListener()
 
-queryButton.addEventListener("click",airQualityAPI)
-queryButton.addEventListener("click",financialInfo)
+queryButton.addEventListener("click",airQualityAPI);
+queryButton.addEventListener("click",financialInfo);
 queryButton.addEventListener("click",addCityTitle);
+// queryButton.addEventListener("click",airfairBudget);
 
 
 

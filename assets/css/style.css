@@ -2,6 +2,7 @@ html{
     display: inline-flexbox;
     border: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 .page{
@@ -64,6 +65,15 @@ html{
     font-weight: bolder;
     letter-spacing: .1em;
     padding-right: 3.5vh;
+}
+.navigation a{
+    color: white;
+    text-decoration: none;
+}
+
+.navigation a:hover{
+    filter: brightness(70%);
+    cursor: pointer;
 }
 
 #firstSec{
@@ -238,10 +248,11 @@ h3 {
 #yourCity{
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-between;
+    border-collapse: collapse;
+    border-spacing: 2vh;
     height: 100vh;
     width: 100%;
-    grid-auto-rows: 40vh 30vh 30vh;
+    grid-auto-rows: 33vh 33vh 33vh;
     background-color: aqua;
 }
 #destination{
@@ -261,40 +272,122 @@ h3 {
 
 #cityInput {
     width: 50vw;
+    height: 14vh;
     background: none;
     border: solid 6px white;
     border-radius: 2rem;
     font-family: 'Akshar', sans-serif;
     color: white;
     font-size:3em;
-    align-self: center;
-    justify-self: center;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
 }
 #cityInput:focus{
     outline: none;
 }
-button{
+#searchButton{
     position: relative;
     align-self: center;
     justify-self: center;
     width: 34vw;
     background: none;
     border: solid 6px white;
-    border-radius: 2rem;
+    border-radius: 1rem;
     font-family: 'Akshar', sans-serif;
     color: white;
     font-weight: bold;
     font-size:2em;
+    cursor: pointer;
 }
+#searchButton:hover{
+    filter: brightness(70%);
+}
+#searchButton a{
+    color: white;
+    text-decoration: none;
+  }
 
 .seeIfthisWorks{
     height: 30vh;
     display: flex;
     flex-direction: column;
     position: relative;
-    align-content:flex-start;
+    align-items:center;
 }
 #seeIfthisWorks{
     height: 30vh;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+#finalSection{
+    display: flex;
+    height: 92vh;
+    width: 100%;
+    justify-content: center;
+    padding-top: 8vh;
+    background-color: blue;
+  }
+  
+  .dataSection{
+    display:flexbox;
+    height: 92vh;
+    width: 100vw;
+    background-color: blue;
+    border-collapse:collapse;
+    grid-template-columns: 33.35vw 33.3vw 33.35vw;
+    grid-auto-rows: 25vh 25vh 25vh 25vh;
+    font-family: 'Akshar', sans-serif;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: center;
+  }
+  
+  #cityResults td{
+    height: 25vh;
+    width: 33vw;
+    font-size: 1.7rem;
+    text-decoration:underline white solid 2px;
+  }
+  
+  #aqiDefinition{
+    height: 20vh;
+    width: 90vw;
+    text-align: start;
+    padding-left: 10vw;
+    font-weight: normal;
+  }
+  
+  #aqiDefinition strong{
+    font-size:larger;
+    text-decoration: underline white .5px;
+    line-height: 1.5;
+  }
+  
+  #wantTolearn{
+    height: 10vh;
+  }
+  
+  #wikiLink{
+    width: 50vw;
+    background: none;
+    border: solid 3px white;
+    border-radius: 1rem;
+    font-family: 'Akshar', sans-serif;
+    color: white;
+    font-weight: normal;
+    font-size:2em;
+    cursor: pointer;
+  }
+  
+  #wikiLink:hover{
+    filter:brightness(70%);
+  }
+  
+  #readyTopricefare{
+    vertical-align: text-top;
+  }
