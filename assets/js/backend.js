@@ -16,8 +16,6 @@ var flightAccessTokenRenewalUrl = 'https://test.api.amadeus.com/v1/security/oaut
 var flightApiClientId = 'dQkp0EighixL15ZTeBzqq4k6pPuVuARd';
 var flightApiClientSecret = '6tgvlbk4vllVwOrT';
 
-var city = 'Shanghai';
-
 var localCurrency = 'USD';
 var localAirportCode = 'AUS';
 
