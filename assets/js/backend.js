@@ -75,27 +75,6 @@ function getExchangeRate(localCurrency, foreignCurrency){
 }
 
 
-
-// API calls
-function getAQI(city, onSuccess, onFailure){
-    var url = `${aqiApiUrl}/${city}/?token=${aqiApiKey}`;
-    fetch(url)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(json => {return json.data.aqi;})
-    .then(onSuccess)
-    .catch(onFailure);
-}
-
-function getCurrencyExchangeRate(city, onSuccess, onFailure){
-    getCountry(city)
-    .then(country=>{return getCurrency(country)})
-    .then(cur => {return getExchangeRate(localCurrency, cur)})
-    .then(onSuccess)
-    .catch(onFailure);  
-}
-
 function renewAccessToken(){
     var requestHeaders = new Headers();
     requestHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -124,17 +103,14 @@ function renewAccessToken(){
 function getAccessToken(){
     let accessToken = window.localStorage.getItem(accessTokenKey);
     let accessTokenTimestamp = window.localStorage.getItem(accessTokenTimestampKey);
-    if (accessToken == null || accessTokenTimestamp == null || accessTokenTimestamp + accessTokenExpirationTime < Date.now()){
-        console.log('accessTokenTimestamp:', accessTokenTimestamp);
-        console.log('accessTokenExpirationTime:', accessTokenExpirationTime);
-        console.log('now:', Date.now());
-        console.log('getting new access token');
+    if (accessToken == null || accessTokenTimestamp == null || Number(accessTokenTimestamp) + Number(accessTokenExpirationTime) < Number(Date.now())){
         return renewAccessToken();
     }
-    else
+    else{
         return new Promise((resolve,reject) => {
             resolve(accessToken);
         });
+    }
 }
 
 function getPlanePricesHelper(accessToken){
@@ -148,8 +124,29 @@ function getPlanePricesHelper(accessToken){
     .then(json => {return json.data;});
 }
 
+// API calls
+function getAQI(city, onSuccess, onFailure){
+    var url = `${aqiApiUrl}/${city}/?token=${aqiApiKey}`;
+    fetch(url)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(json => {return json.data.aqi;})
+    .then(onSuccess)
+    .catch(onFailure);
+}
+
+function getCurrencyExchangeRate(city, onSuccess, onFailure){
+    getCountry(city)
+    .then(country=>{return getCurrency(country)})
+    .then(cur => {return getExchangeRate(localCurrency, cur)})
+    .then(onSuccess)
+    .catch(onFailure);  
+}
+
+
 function getPlanePrices(){
-    getAccessToken()
+    return getAccessToken()
     .then(accessToken => getPlanePricesHelper(accessToken))
     .then(json => {
         newJson = json.map(item => {return {
@@ -158,13 +155,14 @@ function getPlanePrices(){
             "duration": formatTime(item.itineraries[0].duration),
             "connections": item.itineraries[0].segments.length
         }});
-        console.log(newJson);
+        return newJson;
     })
     .catch('plane crashed');
 }
 
 var aqiElement = document.getElementById('aqi');
 var exchangeElement = document.getElementById('exchange');
+var planeElement = document.getElementById('plane');
 
 getAQI(city, aqi => {
         aqiElement.textContent = `AQI in ${city} is ${aqi}`;
@@ -176,7 +174,10 @@ getCurrencyExchangeRate(city, json=>{
     }, 
     ()=>{console.log('fetch call failed!')});
 
-getPlanePrices();
+getPlanePrices()
+.then(json => {
+
+});
 
 function formatTime(time){
     return time.replace('PT', '').replace('H', 'H ').trim();
