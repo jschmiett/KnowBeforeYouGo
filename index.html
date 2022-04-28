@@ -55,84 +55,97 @@
 </section>
 
 <section id="finalSection">
-  <div id="paddingTop">
   <table class="dataSection">
-    <tr id="cityResults"> 
+    <tr class="cityResults"> 
       <td>
-        <div class="borderWeight" id = airQualityResults></div>
+        <div class="borderWeight" id = airQualityResults>Air quality in london is 42 today.</div>
+      </td>
+       <td>
+        <div class="borderWeight" id = localCurrency>Local currency is the CAD.</div>
       </td>
       <td>
-        <div class="borderWeight" id = localCurrency></div>
+        <div class="borderWeight" id = exchangeRate>Exchange rate is 1.28.</div>
       </td>
-      <td>
-        <div class="borderWeight" id = exchangeRate></div>
-      </td>
-    </tr>
-    <tr class="aqiDefandflights">
-      <td colspan="2" id="aqiDefinition">
-        <table id="aqiTable">
-          <tr>
-            <td class="range">0 to 50</td>
-            <td class="description">Satisfactory</td>
-          </tr>
-          <tr>
-            <td class="range">51 to 100</td>
-            <td class="description">Acceptable</td>
-          </tr>
-          <tr>
-            <td class="range">101 to 150</td>
-            <td class="description">Sensitive groups may experience health effects</td>
-          </tr>
-          <tr>
-            <td class="range">151 to 200</td>
-            <td class="description">General public may experience health effects</td>
-          </tr>
-          <tr>
-            <td class="range">201 to 300</td>
-            <td class="description">Health alert: Increased for everyone</td>
-          </tr>
-          <tr>
-            <td class="range">301 and higher</td>
-            <td class="description">Health warning of emergency conditions</td>
-          </tr>
-        </table>
-      </td>
-      <td colspan="2" class="priceLayovers">
-        <table id="priceTable">
-          <tr id="readyTopricefare">
-            <td colspan="2"><strong>budget expectations</strong><br>-we are not a booking company-<br><strong>current airfares to the city you've entered:</strong>
-            </td>
-          </tr>
-          <tr>
-            <td>price</td>
-            <td>seats left</td>
-          </tr>
-          <tr>
-            <td>price</td>
-            <td>seats left</td>
-          </tr>
-          <tr>
-            <td>price</td>
-            <td>seats left</td>
-          </tr>
-          <tr>
-            <td>price</td>
-            <td>seats left</td>
-          </tr>
-          <tr>
-            <td>price</td>
-            <td>seats left</td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-        <td colspan="4" id="wantTolearn">
-        <a href="https://en.wikipedia.org/wiki/Air_quality_index" target="_blank"><button id="wikiLink">learn more about the air quality index</button></a>
-        </td>
     </tr>
   </table>
-</div>
+  <div class='aqiPricetables'>
+    <div class='row'>
+      <div class='column'>
+        <div class='aqiColumn'>
+          <table>
+            <tr>
+              <td class="aqiDefinition">
+                <table>
+                  <th class="range" colspan="2">AIR QUALITY index</th>
+                  <tr>
+                    <td class="range">0 to 50</td>
+                    <td class="description">Satisfactory</td>
+                  </tr>
+                  <tr>
+                    <td class="range">51 to 100</td>
+                    <td class="description">Acceptable</td>
+                  </tr>
+                  <tr>
+                    <td class="range">101 to 150</td>
+                    <td class="description">Sensitive groups may experience health effects</td>
+                  </tr>
+                  <tr>
+                    <td class="range">151 to 200</td>
+                    <td class="description">General public may experience health effects</td>
+                  </tr>
+                  <tr>
+                    <td class="range">201 to 300</td>
+                    <td class="description">Health alert: Increased for everyone</td>
+                  </tr>
+                  <tr>
+                    <td class="range">301 and higher</td>
+                    <td class="description">Health warning of emergency conditions</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class='column'>
+        <div class='priceColumn'>
+          <table>
+            <th class="range" colspan="2">BUDGET expectation</th>
+            <tr>
+              <td>price</td>
+              <td>seats remaining</td>
+            </tr>
+            <tr>
+              <td id="priceOne">$1,253</td>
+              <td id="seatsOne">4</td>
+            </tr>
+            <tr>
+              <td id="priceTwo">$1,253</td>
+              <td id="seatsTwo">4</td>
+            </tr>
+            <tr>
+              <td id="priceThree">$1,253</td>
+              <td id="seatsThree">4</td>
+            </tr>
+            <tr>
+              <td id="priceFour">$1,253</td>
+              <td id="seatsFour">4</td>
+            </tr>
+            <tr>
+              <td id="priceFive">$1,253</td>
+              <td id="seatsFive">4</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="range">- we are not a booking company -</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wantTolearn">
+    <a href="https://en.wikipedia.org/wiki/Air_quality_index" target="_blank"><button id="wikiLink">learn more about the air quality index</button></a>
+  </div>
 </section>
 </body>
 <script src="./assets/js/script.js"></script>
