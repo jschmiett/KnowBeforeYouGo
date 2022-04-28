@@ -1,6 +1,6 @@
 console.log("hello world");
 // inputCity
-var cityAPIResults = document.querySelector("cityResults");
+var tableTitle = document.querySelector("#tableTitle");
 var userCity = document.querySelector("#cityInput");
 console.log(userCity);
 var queryButton = document.getElementById("searchButton");
@@ -20,10 +20,8 @@ userCity.addEventListener('keyup',(e)=>{
   })
 
 function addCityTitle() {
-    console.log(userCity.value);
-    var cityTitle = document.createElement("h1")
-    cityTitle.textContent = userCity.value;
-    cityAPIResults.appendChild(cityTitle);
+    console.log("hello");
+    tableTitle.textContent = userCity.value;
  }
 
 //Input interface for air quality API here
@@ -52,9 +50,9 @@ function financialInfo() {
 
 // userCity.addEventListener()
 
-queryButton.addEventListener("click",airQualityAPI);
-queryButton.addEventListener("click",financialInfo);
-queryButton.addEventListener("click",addCityTitle);
+queryButton.addEventListener("click", airQualityAPI);
+queryButton.addEventListener("click", financialInfo);
+queryButton.addEventListener("click", addCityTitle);
 // queryButton.addEventListener("click",airfairBudget);
 
 
