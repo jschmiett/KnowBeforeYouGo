@@ -171,7 +171,7 @@ h3 {
 }
 .fireTwo{
     display: flex;
-    text-align: center;
+    text-align: left;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -181,14 +181,20 @@ h3 {
 #importance{
     width: 80%;
     font-family: 'Akshar', sans-serif;
-    font-size: 1.7rem;
+    font-size: 2rem;
     color: white;
-    font-weight: bold;
+    text-shadow: .9px .9px black;
+    font-weight: bolder;
+    border-left: white 4px solid;
+    padding-left: 1rem;
+}
+#tableGrid{
+  height: 100vh;
 }
 
 .grid{
-    display: flexbox;
-    height: 100vh;
+    table-layout: fixed;
+    height: 100%;
     width: 100%;
     border-collapse:collapse;
     grid-template-columns: 1fr 1fr 1fr;
@@ -323,22 +329,20 @@ h3 {
 }
 
 #finalSection{
-    display: flex;
-    height: 92vh;
+    height: 100vh;
     width: 100%;
     justify-content: center;
-    padding-top: 8vh;
     background-color: blue;
   }
   
   .dataSection{
-    display:flexbox;
-    height: 92vh;
+    table-layout: fixed;
+    height: 100vh;
     width: 100vw;
     background-color: blue;
     border-collapse:collapse;
-    grid-template-columns: 33.35vw 33.3vw 33.35vw;
-    grid-auto-rows: 25vh 25vh 25vh 25vh;
+    grid-template-columns: 25vw 25vw 25vw 25vw;
+    grid-auto-rows: 25vh 40vh 35vh;
     font-family: 'Akshar', sans-serif;
     font-size: 1rem;
     color: white;
@@ -348,26 +352,59 @@ h3 {
   }
   
   #cityResults td{
+    column-span: all;
+    width: 100%;
     height: 25vh;
-    width: 33vw;
-    font-size: 1.7rem;
-    text-decoration:underline white solid 2px;
+    font-size: 1.4rem;
+    letter-spacing: .3rem;
+    padding-top: 14vh;
   }
-  
+  #airQualityResults{
+    border-left: white .5rem solid;
+  }
+  #localCurrency{
+    border-left: white .5rem solid;
+    border-right: white .5rem solid;
+  }
+  #exchangeRate{
+    border-right: white .5rem solid;
+  }
+
+  .borderWeight{
+  }
+  .aqiDefandflights{
+    column-span: all;
+    height: 40vh;
+    width: 100%;
+    justify-items: center;
+  }
   #aqiDefinition{
-    height: 20vh;
-    width: 90vw;
     text-align: start;
-    padding-left: 10vw;
     font-weight: normal;
   }
-  
-  #aqiDefinition strong{
-    font-size:larger;
-    text-decoration: underline white .5px;
-    line-height: 1.5;
+  #aqiTable{
+    border-collapse: separate;
+    color: white;
+    border-left: .1rem white solid;
   }
   
+  .range{
+    font-family: 'Akshar', sans-serif;
+    font-size: 1.4rem;
+    font-weight: bolder;
+  }
+  .description{
+    font-size: 1.15rem;
+    font-weight: bolder;
+  }
+  .priceLayovers{
+    justify-content: center;
+  }
+  #priceTable{
+    border-collapse: separate;
+    color: white;
+    border-left: .1rem white solid;
+  }
   #wantTolearn{
     height: 10vh;
   }
@@ -389,5 +426,12 @@ h3 {
   }
   
   #readyTopricefare{
-    vertical-align: text-top;
+    text-align: start;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1;
+  }
+  #readyTopricefare strong{
+    font-size: 1.45rem;
+    letter-spacing: .4rem;
   }
