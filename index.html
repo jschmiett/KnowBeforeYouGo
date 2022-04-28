@@ -27,20 +27,20 @@
     <h3 id="goGo">uGo</h3>
   </div>
   <div class="fireTwo">
-    <p id="importance">Short- and/or long-term exposure to air pollution has been associated with a wide range of human health effects including increased respiratory symptoms, hospitalization for heart or lung diseases, and even premature death. Hazardous (or toxic) air pollutants may cause cancer or other serious health effects, such as reproductive effects or birth defects.</p>
+    <p id="importance">Air pollution has been associated with a wide range of human health effects including increased respiratory symptoms, hospitalization for heart or lung diseases, and even premature death. Hazardous (or toxic) air pollutants may cause cancer or other serious health effects, such as reproductive effects or birth defects.</p>
   </div>
 </section>
 
-<table class="grid">
+<table id="tableGrid" class="grid">
   <tr>
-   <td id="oneClean">Cleanest</td>
-   <td id="twoClean">2nd Cleanest</td>
-   <td id="threeClean">3rd Cleanest</td>
+   <td id="oneClean">cleanest</td>
+   <td id="twoClean">2nd cleanest</td>
+   <td id="threeClean">3rd cleanest</td>
   </tr>
   <tr>
-   <td id="oneDirty">Most Polluted</td>
-   <td id="twoDirty">2nd Polluted</td>
-   <td id="threeDirty">3rd Polluted</td>
+   <td id="oneDirty">most polluted</td>
+   <td id="twoDirty">2nd polluted</td>
+   <td id="threeDirty">3rd polluted</td>
   </tr>
 </table>
 
@@ -50,50 +50,86 @@
     <input type="text" id="cityInput" autocomplete="off">
   </div>
   <div class="seeIfthisWorks">
-    <a href="#finalSection"><button id="searchButton">I'm ready to know before I go!</button></a>
+    <a href="#finalSection"><button id="searchButton">click to find out</button></a>
   </div>
 </section>
 
 <section id="finalSection">
   <div id="paddingTop">
   <table class="dataSection">
-    <caption id = "tableTitle"></caption>
-    <tr id = "cityResults"> 
-      <td id="airQ">Air Quality
-        <div id = airQualityResults></div>
-      </td>
-      <td id="localC">Local Currency
-        <div id = localCurrency></div>
-      </td>
-      <td id="currencyXchange">Exchange Rate
-        <div id = exchangeRate></div>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3" id="aqiDefinition">
-          <strong>0 to 50</strong> Satisfactory. <br>
-          <strong>51 to 100</strong> Acceptable.<br>
-          <strong>101 to 150</strong> Sensitive groups may experience health effects.<br>
-          <strong>151 to 200</strong> General public may experience health effects. <br>
-          <strong>201 to 300</strong>	Health alert: Increased for everyone. <br>
-          <strong>301 and higher</strong>	Health warning of emergency conditions.
-      </td>
-    </tr>
-    <tr>
-        <td colspan="3" id="wantTolearn">
-        <a href="https://en.wikipedia.org/wiki/Air_quality_index" target="_blank"><button id="wikiLink">Want to learn more?</button></a>
-        </td>
-    </tr>
-    <tr id="readyTopricefare">
-      <td colspan="3">
-        Ready to price out your airfare?              
-        <p>We're not a booking company, but we can help you budget for your trip by giving you 5 examples of flights you could book to get to you want to fly to.</p>
-      </td>
-    </tr>
-    <tr>
+    <tr id="cityResults"> 
       <td>
-        <div id="airfareResults"></div>
+        <div class="borderWeight" id = airQualityResults></div>
       </td>
+      <td>
+        <div class="borderWeight" id = localCurrency></div>
+      </td>
+      <td>
+        <div class="borderWeight" id = exchangeRate></div>
+      </td>
+    </tr>
+    <tr class="aqiDefandflights">
+      <td colspan="2" id="aqiDefinition">
+        <table id="aqiTable">
+          <tr>
+            <td class="range">0 to 50</td>
+            <td class="description">Satisfactory</td>
+          </tr>
+          <tr>
+            <td class="range">51 to 100</td>
+            <td class="description">Acceptable</td>
+          </tr>
+          <tr>
+            <td class="range">101 to 150</td>
+            <td class="description">Sensitive groups may experience health effects</td>
+          </tr>
+          <tr>
+            <td class="range">151 to 200</td>
+            <td class="description">General public may experience health effects</td>
+          </tr>
+          <tr>
+            <td class="range">201 to 300</td>
+            <td class="description">Health alert: Increased for everyone</td>
+          </tr>
+          <tr>
+            <td class="range">301 and higher</td>
+            <td class="description">Health warning of emergency conditions</td>
+          </tr>
+        </table>
+      </td>
+      <td colspan="2" class="priceLayovers">
+        <table id="priceTable">
+          <tr id="readyTopricefare">
+            <td colspan="2"><strong>budget expectations</strong><br>-we are not a booking company-<br><strong>current airfares to the city you've entered:</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>price</td>
+            <td>seats left</td>
+          </tr>
+          <tr>
+            <td>price</td>
+            <td>seats left</td>
+          </tr>
+          <tr>
+            <td>price</td>
+            <td>seats left</td>
+          </tr>
+          <tr>
+            <td>price</td>
+            <td>seats left</td>
+          </tr>
+          <tr>
+            <td>price</td>
+            <td>seats left</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+        <td colspan="4" id="wantTolearn">
+        <a href="https://en.wikipedia.org/wiki/Air_quality_index" target="_blank"><button id="wikiLink">learn more about the air quality index</button></a>
+        </td>
     </tr>
   </table>
 </div>
@@ -105,5 +141,4 @@
 </html>
 
 
-<!-- Local language, currency and the exchange rate, plane ticket options + suggestions of nearby cities with cleaner Air 
-5 airfare divs that will populate under the id="airfareResults"-->
+<!-- price, seats left, duration, connections -->

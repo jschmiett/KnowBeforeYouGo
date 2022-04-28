@@ -63,15 +63,15 @@ function addCityTitle() {
  function airQualityAPI() {
     getAQI(userCity.value,aqi=>{
         console.log(aqi)
-        airQualityAPIResults.innerText = "The air quality in " + userCity.value + " is " + aqi + " today.";
+        airQualityAPIResults.innerText = "Air quality in " + userCity.value + " is " + aqi + " today";
     });
 }
 
 //Input interface for Currency and Exchange Rate here
 function financialInfo() {
     getCurrencyExchangeRate(userCity.value, json=>{
-        localCurrencyAPIResults.innerText = "The local currency is the " + json.new_currency + ".";
-        exchangeRateAPIResults.innerText = "The exchange rate is " + json.new_amount + ".";
+        localCurrencyAPIResults.innerText = "Local currency is the " + json.new_currency;
+        exchangeRateAPIResults.innerText = "Exchange rate is " + json.new_amount;
     },
     ()=>{console.log('fetch call failed!')});   
 }
