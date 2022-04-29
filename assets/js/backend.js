@@ -18,6 +18,7 @@ var airportApiSecretKey = 'dfe70229bf280a4';
 var localCurrency = 'USD';
 var localAirportCode = 'AUS';
 
+
 var accessTokenTimestampKey = 'accessTokenTimeout'
 var accessTokenKey = 'accessTokenKey'
 
@@ -117,6 +118,7 @@ function getPlanePrices(city){
     .then(airportCode => {console.log('got airport code=',airportCode); return getPlanePricesHelper(localAirportCode,airportCode,moment().add(1, 'month').format('YYYY-MM-DD'), moment().add(1, 'month').add(1,'week').format('YYYY-MM-DD'))})
     .then(json => {
         console.log('json:',json);
+
         var fares = {};
         var jf = json.fares;
         for (f of jf){
@@ -164,6 +166,3 @@ function getPlanePrices(city){
 //         planeElement.appendChild(el);
 //     }
 // });
-
-
-

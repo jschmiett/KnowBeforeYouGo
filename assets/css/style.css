@@ -329,109 +329,139 @@ h3 {
 }
 
 #finalSection{
-    height: 100vh;
-    width: 100%;
-    justify-content: center;
-    background-color: blue;
-  }
-  
-  .dataSection{
-    table-layout: fixed;
-    height: 100vh;
-    width: 100vw;
-    background-color: blue;
-    border-collapse:collapse;
-    grid-template-columns: 25vw 25vw 25vw 25vw;
-    grid-auto-rows: 25vh 40vh 35vh;
-    font-family: 'Akshar', sans-serif;
-    font-size: 1rem;
-    color: white;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: center;
-  }
-  
-  #cityResults td{
-    column-span: all;
-    width: 100%;
-    height: 25vh;
-    font-size: 1.4rem;
-    letter-spacing: .3rem;
-    padding-top: 14vh;
-  }
-  #airQualityResults{
-    border-left: white .5rem solid;
-  }
-  #localCurrency{
-    border-left: white .5rem solid;
-    border-right: white .5rem solid;
-  }
-  #exchangeRate{
-    border-right: white .5rem solid;
-  }
+  display: flexbox;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  background-color: blue;
+}
 
-  .borderWeight{
-  }
-  .aqiDefandflights{
-    column-span: all;
-    height: 40vh;
-    width: 100%;
-    justify-items: center;
-  }
-  #aqiDefinition{
-    text-align: start;
-    font-weight: normal;
-  }
-  #aqiTable{
-    border-collapse: separate;
-    color: white;
-    border-left: .1rem white solid;
-  }
-  
-  .range{
-    font-family: 'Akshar', sans-serif;
-    font-size: 1.4rem;
-    font-weight: bolder;
-  }
-  .description{
-    font-size: 1.15rem;
-    font-weight: bolder;
-  }
-  .priceLayovers{
-    justify-content: center;
-  }
-  #priceTable{
-    border-collapse: separate;
-    color: white;
-    border-left: .1rem white solid;
-  }
-  #wantTolearn{
-    height: 10vh;
-  }
-  
-  #wikiLink{
-    width: 50vw;
-    background: none;
-    border: solid 3px white;
-    border-radius: 1rem;
-    font-family: 'Akshar', sans-serif;
-    color: white;
-    font-weight: normal;
-    font-size:2em;
-    cursor: pointer;
-  }
-  
-  #wikiLink:hover{
-    filter:brightness(70%);
-  }
-  
-  #readyTopricefare{
-    text-align: start;
-    font-size: 1rem;
-    font-weight: bold;
-    line-height: 1;
-  }
-  #readyTopricefare strong{
-    font-size: 1.45rem;
-    letter-spacing: .4rem;
-  }
+.dataSection{
+  table-layout: fixed;
+  width: 100vw;
+  border-collapse:collapse;
+  font-family: 'Akshar', sans-serif;
+  font-size: 1rem;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: center;
+}
+
+.cityResults td{
+  column-span: all;
+  width: 100%;
+  font-size: 1.4rem;
+  letter-spacing: .3rem;
+  padding-top: 26vh;
+}
+#airQualityResults{
+  border-left: white .5rem solid;
+}
+#localCurrency{
+  border-left: white .5rem solid;
+  border-right: white .5rem solid;
+}
+#exchangeRate{
+  border-right: white .5rem solid;
+}
+
+.aqiPricetables {
+  padding: 5vh 5vh 0 5vh;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.double-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 2;
+}
+
+.aqiColumn {
+  padding-top: 8vh;
+}
+
+.aqiColumn table th{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  line-height: 1.1;
+  text-decoration: white solid .1rem;
+  border-bottom: .1rem solid white;
+}
+
+.aqiDefinition table{
+  border-collapse: separate;
+  width: 40vw;
+  color: white;
+}
+
+.range{
+  font-family: 'Akshar', sans-serif;
+  font-size: 1.4rem;
+  font-weight: bolder;
+}
+.description{
+  font-size: 1.15rem;
+  font-weight: bolder;
+}
+
+.priceColumn {
+  padding-top: 8vh;
+}
+.priceColumn table{
+  border-collapse: separate;
+  width: 40vw;
+  color: white;
+  text-align: center;
+}
+.priceColumn table th{
+  font-size: 1.5rem;
+  font-weight: bolder;
+  line-height: 1.1;
+  text-decoration: white solid .1rem;
+  border-bottom: .1rem solid white;
+}
+
+.priceColumn table td{
+  font-family: 'Akshar', sans-serif;
+  font-size: 1.2rem;
+}
+
+.priceColumn table td:nth-child(2){
+  width: 50%;
+}
+
+.wantTolearn{
+  text-align: center;
+  padding-top: 8vh;
+}
+
+#wikiLink{
+  width: 50vw;
+  background: none;
+  border: solid 3px white;
+  border-radius: 1rem;
+  font-family: 'Akshar', sans-serif;
+  color: white;
+  font-weight: normal;
+  font-size:2em;
+  cursor: pointer;
+}
+
+#wikiLink:hover{
+  filter:brightness(70%);
+}
