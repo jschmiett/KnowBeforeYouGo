@@ -198,23 +198,37 @@ h3 {
     width: 100%;
     border-collapse:collapse;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 50vh;
+    grid-auto-rows: 33.33%;
     font-family: 'Akshar', sans-serif;
     font-size: 2rem;
     color: white;
+    text-shadow: 1px 1px black;
+    text-decoration: overline solid white .25rem;
     font-weight: bold;
     text-align: center;
 }
-  
+.overlay{
+    font-family: 'Akshar', sans-serif;
+    font-size: 4rem;
+    color: white;
+    background-color: green;
+    text-shadow: 1px 1px black;
+    text-decoration: overline solid white .25rem;
+    font-weight: bold;
+    text-align: center;
+    vertical-align:middle;
+}
+
 #oneClean{
-    background-color: rgb(33, 64, 14);
+    background-color: rgb(102, 163, 64);
+    align-self: flex-end;
 }
 #oneClean:hover{
     filter: brightness(80%);
 }
   
 #twoClean{
-    background-image: url(https://img.freepik.com/free-vector/cityscape-scene-eco-friendly_24877-50683.jpg?t=st=1650639161~exp=1650639761~hmac=ab6ba48b0a5c8bbfeeae277d0cbc9233bec1a35b60816bb4a55df0ce6ca2c91b&w=740);
+    background-color: rgb(33, 64, 14);
     background-size:cover;
 }
 #twoClean:hover{
@@ -222,14 +236,14 @@ h3 {
 }
 
 #threeClean{
-    background-color: rgb(33, 64, 14);
+    background-color: rgb(102, 163, 64);;
 }
 #threeClean:hover{
     filter: brightness(80%);
 }
   
 #oneDirty{
-    background-image: url(https://img.freepik.com/free-vector/polution-city-people-mask-town-panorama_627350-492.jpg?w=740);
+    background-color: rgb(30, 31, 29);
     background-size: cover;
 }
 #oneDirty:hover{
@@ -244,7 +258,7 @@ h3 {
 }
   
 #threeDirty{
-    background-image: url(https://img.freepik.com/free-vector/highly-polluting-factory-plant-with-smoking-towers-pipes-carbon-dioxide-emissions_625536-81.jpg?w=740);
+    background-color: rgb(30, 31, 29);
     background-size: cover;
 }
 #threeDirty:hover{
