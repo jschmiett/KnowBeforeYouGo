@@ -11,12 +11,13 @@ var currencyExchangeApiKey = 'zoACBAtFNJtKJAL8Nl7DlA==nqcwIFNykYOqSb4K';
 var flightBaseUrl = 'https://api.flightapi.io/roundtrip';
 var flightApiKey = '6269e43d1e2d38302b44a480';
 
-var city = 'Shanghai';
+var airportBaseUrl = 'https://www.air-port-codes.com/api/v1/multi';
+var airportApiKey = '238d287918';
+var airportApiSecretKey = 'dfe70229bf280a4';
+
 var localCurrency = 'USD';
 var localAirportCode = 'AUS';
-var dest = 'BKK';
-var departureDate = '2022-11-01';
-var returnDate = '2022-11-08';
+
 
 var accessTokenTimestampKey = 'accessTokenTimeout'
 var accessTokenKey = 'accessTokenKey'
@@ -68,10 +69,27 @@ function getExchangeRate(localCurrency, foreignCurrency){
     });
 }
 
-function getPlanePricesHelper(){
-    var url = `${flightBaseUrl}/${flightApiKey}/${localAirportCode}/${dest}/${departureDate}/${returnDate}/1/0/1/Economy/USD`;
+function getPlanePricesHelper(from, to, departureDate, returnDate){
+    console.log('from:', from, 'to:', to,'depart:',departureDate, 'arrive:',returnDate);
+    var url = `${flightBaseUrl}/${flightApiKey}/${from}/${to}/${departureDate}/${returnDate}/1/0/1/Economy/USD`;
+    console.log(url);
     return fetch(url)
-    .then(response => {return response.json();});
+    .then(response => {console.log('response:',response);return response.json();});
+}
+
+function getAirportCode(city){
+    console.log('getting airport code of ', city)
+    var url = `${airportBaseUrl}?term=${city}&limit=1&type=a`;
+    var headers = {
+        'APC-Auth':'238d287918',
+        'APC-Auth-Secret':'dfe70229bf280a4'
+    };
+    return fetch(url, {
+        'headers':headers,
+        'method':'POST'
+    })
+    .then(response => {return response.json()})
+    .then(json => {console.log(json);return json.airports[0].iata});
 }
 
 // API calls
@@ -94,9 +112,13 @@ function getCurrencyExchangeRate(city, onSuccess, onFailure){
     .catch(onFailure);  
 }
 
-function getPlanePrices(){
-    return getPlanePricesHelper()
+function getPlanePrices(city){
+    console.log('get plane prices');
+    return getAirportCode(city)
+    .then(airportCode => {console.log('got airport code=',airportCode); return getPlanePricesHelper(localAirportCode,airportCode,moment().add(1, 'month').format('YYYY-MM-DD'), moment().add(1, 'month').add(1,'week').format('YYYY-MM-DD'))})
     .then(json => {
+        console.log('json:',json);
+
         var fares = {};
         var jf = json.fares;
         for (f of jf){
@@ -105,6 +127,7 @@ function getPlanePrices(){
                     fares[f.tripId] = {"price":f.price.totalAmount,"seats":f.remainingSeatsCount};
             }
         }
+        console.log('fares:', fares);
         var options = Object.values(fares);
         options.sort((x,y) => {
             if (x.price === y.price)
@@ -112,35 +135,34 @@ function getPlanePrices(){
             return x.price - y.price;
         });
         // ToDo: add flight duration and stops for each leg
+        console.log('opions:', options);
         return options;
     })
     .catch('plane crashed');
 }
 
-var aqiElement = document.getElementById('aqi');
-var exchangeElement = document.getElementById('exchange');
-var planeElement = document.getElementById('plane');
 
-getAQI(city, aqi => {
-        aqiElement.textContent = `AQI in ${city} is ${aqi}`;
-    },
-    ()=>{console.log('fetch call failed!')});
+// var aqiElement = document.getElementById('aqi');
+// var exchangeElement = document.getElementById('exchange');
+// var planeElement = document.getElementById('plane');
 
-getCurrencyExchangeRate(city, json=>{
-        exchangeElement.textContent = `${json.old_amount} ${json.old_currency} = ${json.new_amount} ${json.new_currency}`;
-    }, 
-    ()=>{console.log('fetch call failed!')});
+// getAQI(city, aqi => {
+//         aqiElement.textContent = `AQI in ${city} is ${aqi}`;
+//     },
+//     ()=>{console.log('fetch call failed!')});
 
-getPlanePrices()
-.then(flights => {
-    let nf = Math.min(5, flights.length);
-    for(let i = 0; i < nf; ++i){
-        let el = document.createElement('p');
-        el.textContent = `price: $${flights[i].price} | seats: ${flights[i].seats}`;
-        planeElement.appendChild(el);
-    }
-});
+// getCurrencyExchangeRate(city, json=>{
+//         exchangeElement.textContent = `${json.old_amount} ${json.old_currency} = ${json.new_amount} ${json.new_currency}`;
+//     }, 
+//     ()=>{console.log('fetch call failed!')});
 
-function formatTime(time){
-    return time.replace('PT', '').replace('H', 'H ').trim();
-}
+// getPlanePrices('Berlin')
+// .then(flights => {
+//     console.log(flights);
+//     let nf = Math.min(5, flights.length);
+//     for(let i = 0; i < nf; ++i){
+//         let el = document.createElement('p');
+//         el.textContent = `price: $${flights[i].price} | seats: ${flights[i].seats}`;
+//         planeElement.appendChild(el);
+//     }
+// });

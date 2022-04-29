@@ -1,6 +1,6 @@
 console.log("hello world");
 // inputCity
-var tableTitle = document.querySelector("#tableTitle");
+var tableTitle = document.querySelector("#echoCity");
 var userCity = document.querySelector("#cityInput");
 console.log(userCity);
 var queryButton = document.getElementById("searchButton");
@@ -30,7 +30,6 @@ var seatsFive = document.getElementById("seatsFive");
 // var connectionsThree = document.getElementById("connectionsThree");
 // var connectionsFour = document.getElementById("connectionsFour");
 // var connectionsFive = document.getElementById("connectionsFive");
-
 
 
 //Dummy Array Here
@@ -130,19 +129,31 @@ function getMockData() {
 
   });
 }
-//Input Airfare API function here
-// function airfairBudget() {
-//     console.log("airplane prices");
-//     airfareAPIResults.innerHTML = "Hello World";
 
-// }
+function showPlaneFares(){
+    getPlanePrices()
+    //getMockData()
+    .then(flights => {
+        console.log(flights);
+        let nf = Math.min(5, flights.length);
+        let i = 0;
+        for(; i < nf; ++i){
+            priceElements[i].textContent = `$${flights[i].price}`;
+            seatsElements[i].textContent = `${flights[i].seats} seats left at`;
+        }
+        for(; i < 5; ++i){
+            priceElements[i].textContent = '';
+            seatsElements[i].textContent = '';
+        }
+    });
+}
 
-// userCity.addEventListener()
 
 queryButton.addEventListener("click", airQualityAPI);
 queryButton.addEventListener("click", financialInfo);
 queryButton.addEventListener("click", addCityTitle);
-queryButton.addEventListener("click", getMockData);
+//queryButton.addEventListener("click", getMockData);
+queryButton.addEventListener("click", showPlaneFares);
 
 
 
