@@ -1,6 +1,6 @@
 console.log("hello world");
 // inputCity
-var tableTitle = document.querySelector("#tableTitle");
+var tableTitle = document.querySelector("#echoCity");
 var userCity = document.querySelector("#cityInput");
 console.log(userCity);
 var queryButton = document.getElementById("searchButton");
@@ -11,6 +11,8 @@ var localCurrencyAPIResults = document.getElementById("localCurrency");
 var exchangeRateAPIResults = document.getElementById("exchangeRate");
 //var airfareAPIResults = document.getElementById("airfareResults");
 var cityTitle = document.getElementById("userInputCity");
+var priceElements = [1,2,3,4,5].map(i => document.getElementById(`price${i}`));
+var seatsElements = [1,2,3,4,5].map(i => document.getElementById(`seats${i}`));
 
 //Dummy Array Here
 let planeResults = [
@@ -84,23 +86,33 @@ function getMockData() {
       resolve(planeResults);
     }, 300);
   });
-  myPromise.then(data=> {
-    console.log(data);
-  });
+  return myPromise;
 }
-//Input Airfare API function here
-// function airfairBudget() {
-//     console.log("airplane prices");
-//     airfareAPIResults.innerHTML = "Hello World";
 
-// }
+function showPlaneFares(){
+    getPlanePrices()
+    //getMockData()
+    .then(flights => {
+        console.log(flights);
+        let nf = Math.min(5, flights.length);
+        let i = 0;
+        for(; i < nf; ++i){
+            priceElements[i].textContent = `$${flights[i].price}`;
+            seatsElements[i].textContent = `${flights[i].seats} seats left at`;
+        }
+        for(; i < 5; ++i){
+            priceElements[i].textContent = '';
+            seatsElements[i].textContent = '';
+        }
+    });
+}
 
-// userCity.addEventListener()
 
 queryButton.addEventListener("click", airQualityAPI);
 queryButton.addEventListener("click", financialInfo);
 queryButton.addEventListener("click", addCityTitle);
-queryButton.addEventListener("click", getMockData);
+//queryButton.addEventListener("click", getMockData);
+queryButton.addEventListener("click", showPlaneFares);
 
 
 
