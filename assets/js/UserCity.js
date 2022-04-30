@@ -147,12 +147,11 @@ function updateHistory(history){
     }
     for(let i = history.length-1; i >= 0; --i){
         let cityDiv = document.createElement('div');
-        console.log('new element', cityDiv);
         cityDiv.textContent = history[i];
         cityDiv.className = 'historyItem';
         cityDiv.addEventListener('click', event=>{
             userCity.value = event.target.textContent;
-            airQualityAPI();
+            searchCity();
         });
         historyElement.appendChild(cityDiv);
     }

@@ -363,9 +363,10 @@ h3 {
   vertical-align: center;
 }
 
-.cityResults td{
-  column-span: all;
-  width: 100%;
+.cityResults{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   font-size: 1.4rem;
   letter-spacing: .3rem;
   padding-top: 26vh;
@@ -390,6 +391,7 @@ h3 {
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: space-around;
 }
 
 .column {
@@ -489,17 +491,40 @@ h3 {
 
 .historyItem{
   color: #f2f2f2;
-  font-size: 1.5em;
-  margin: 20px;
+  font-size: 1.4em;
+  margin: 10px;
 }
 
 .historyItemHeader{
   color: #EEE;
-  font-size: 1.5em;
-  margin: 20px;
+  font-size: 1.4em;
+  margin: 10px;
 }
 
 .historyItem:hover{
   color: white;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1080) {
+  #history{
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cityResults{
+    flex-direction: column;
+  }
+
+  .borderWeight{
+    margin-bottom: 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .row{
+    flex-direction: column;
+    justify-content: center;
+  }
 }
