@@ -480,3 +480,26 @@ h3 {
 #wikiLink:hover{
   filter:brightness(70%);
 }
+
+#history{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.historyItem{
+  color: #f2f2f2;
+  font-size: 1.5em;
+  margin: 20px;
+}
+
+.historyItemHeader{
+  color: #EEE;
+  font-size: 1.5em;
+  margin: 20px;
+}
+
+.historyItem:hover{
+  color: white;
+  cursor: pointer;
+}
