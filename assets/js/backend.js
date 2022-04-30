@@ -141,6 +141,7 @@ function getPlanePrices(city){
     .catch('plane crashed');
 }
 
+//test
 
 // var aqiElement = document.getElementById('aqi');
 // var exchangeElement = document.getElementById('exchange');
