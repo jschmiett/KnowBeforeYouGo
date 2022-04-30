@@ -85,8 +85,8 @@ function getMockData() {
 }
 
 function showPlaneFares(){
-    getPlanePrices(userCity.value)
-    //getMockData()
+    //getPlanePrices(userCity.value)
+    getMockData()
     .then(flights => {
         console.log(flights);
         let nf = Math.min(5, flights.length);
