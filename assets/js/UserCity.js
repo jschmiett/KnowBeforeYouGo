@@ -66,7 +66,10 @@ userCity.addEventListener('keyup',(e)=>{
     airQualityAPIResults.innerText = '';
     getAQI(userCity.value,aqi=>{
         console.log(aqi)
-        airQualityAPIResults.innerText = "Air quality in " + userCity.value + " is " + aqi + " today";
+        if(aqi === undefined)
+            airQualityAPIResults.innerText = "Unable to find Air quality in " + userCity.value;
+        else
+            airQualityAPIResults.innerText = "Air quality in " + userCity.value + " is " + aqi + " today";
     });
 }
 
@@ -75,8 +78,15 @@ function financialInfo() {
     localCurrencyAPIResults.innerText = '';
     exchangeRateAPIResults.innerText = '';
     getCurrencyExchangeRate(userCity.value, json=>{
-        localCurrencyAPIResults.innerText = "Local currency is the " + json.new_currency;
-        exchangeRateAPIResults.innerText = `Exchange rate is ${json.new_amount} ${json.new_currency} for ${json.old_amount} ${json.old_currency}`;
+        if('new_amount' in json){
+            localCurrencyAPIResults.innerText = "Local currency is the " + json.new_currency;
+            exchangeRateAPIResults.innerText = `Exchange rate is ${json.new_amount} ${json.new_currency} for ${json.old_amount} ${json.old_currency}`;
+        }
+        else{
+            localCurrencyAPIResults.innerText = "Unable to find local currency for " + userCity.value;
+            exchangeRateAPIResults.innerText = "Unable to find currency exchange information";
+        }
+        
     },
     ()=>{console.log('fetch call failed!')});   
 }
@@ -97,8 +107,8 @@ function showPlaneFares(){
         priceElements[i].textContent = '';
         seatsElements[i].textContent = '';
     }
-    //getPlanePrices(userCity.value)
-    getMockData()
+    getPlanePrices(userCity.value)
+    //getMockData()
     .then(flights => {
         console.log(flights);
         let nf = Math.min(5, flights.length);
