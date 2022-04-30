@@ -1,18 +1,17 @@
-# Know Before You Go
-
 ## Project Title:
-
-## Project Description:
+Know Before uGo
 
 ## User Story:
-As a User I want to get safety information about my travel
+AS AN international travel enthusiast I WANT a centralized location to research basic information that would be helpful to know before traveling to a city outside of the United States SO THAT it's easier for me to prepare to travel outside my country.
+
 When I enter the name of a city I will be presented with information about traveling to that city, such as air quality index of that city, local language and currency, currency exchange rate, and options for purchasing airfare.
 
-## APIs to be Used:
-- https://api.waqi.info
-- https://api.api-ninjas.com/v1/convertcurrency
-- https://test.api.amadeus.com/v2/shopping/flight-offers
+##Technologies Used:
+Javascript, HTML, and CSS
+
+Screenshot:
 
 
-## Rough breakdown of tasks:
+##Link to Application:
+https://jschmiett.github.io/KnowBeforeYouGo/
 
