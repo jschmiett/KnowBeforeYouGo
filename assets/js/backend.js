@@ -88,8 +88,8 @@ function getAirportCode(city){
         'headers':headers,
         'method':'POST'
     })
-    .then(response => {return response.json()})
-    .then(json => {console.log(json);return json.airports[0].iata});
+    .then(response => {console.log('response:',response); return response.json()})
+    .then(json => {console.log('<airport>', json, '</airport>');return json.airports[0].iata});
 }
 
 // API calls
@@ -115,18 +115,15 @@ function getCurrencyExchangeRate(city, onSuccess, onFailure){
 function getPlanePrices(city){
     console.log('get plane prices');
     return getAirportCode(city)
-    .then(airportCode => {console.log('got airport code=',airportCode); return getPlanePricesHelper(localAirportCode,airportCode,moment().add(1, 'month').format('YYYY-MM-DD'), moment().add(1, 'month').add(1,'week').format('YYYY-MM-DD'))})
+    .then(airportCode => {console.log('got airport code=',airportCode); return getPlanePricesHelper(localAirportCode,airportCode,moment().add(3, 'month').format('YYYY-MM-DD'), moment().add(3, 'month').add(1,'week').format('YYYY-MM-DD'))})
     .then(json => {
         console.log('json:',json);
 
         var fares = {};
         var jf = json.fares;
-        for (f of jf){
-            if (f.remainingSeatsCount > 0){
-                if (!(f.tripId in fares) || fares[f.tripId]["price"] > f.price.totalAmount)
-                    fares[f.tripId] = {"price":f.price.totalAmount,"seats":f.remainingSeatsCount};
-            }
-        }
+        for (f of jf)
+            if (!(f.tripId in fares) || fares[f.tripId]["price"] > f.price.totalAmount)
+                fares[f.tripId] = {"price":f.price.totalAmount,"seats":f.remainingSeatsCount};
         console.log('fares:', fares);
         var options = Object.values(fares);
         options.sort((x,y) => {
@@ -140,30 +137,3 @@ function getPlanePrices(city){
     })
     .catch('plane crashed');
 }
-
-//test
-
-// var aqiElement = document.getElementById('aqi');
-// var exchangeElement = document.getElementById('exchange');
-// var planeElement = document.getElementById('plane');
-
-// getAQI(city, aqi => {
-//         aqiElement.textContent = `AQI in ${city} is ${aqi}`;
-//     },
-//     ()=>{console.log('fetch call failed!')});
-
-// getCurrencyExchangeRate(city, json=>{
-//         exchangeElement.textContent = `${json.old_amount} ${json.old_currency} = ${json.new_amount} ${json.new_currency}`;
-//     }, 
-//     ()=>{console.log('fetch call failed!')});
-
-// getPlanePrices('Berlin')
-// .then(flights => {
-//     console.log(flights);
-//     let nf = Math.min(5, flights.length);
-//     for(let i = 0; i < nf; ++i){
-//         let el = document.createElement('p');
-//         el.textContent = `price: $${flights[i].price} | seats: ${flights[i].seats}`;
-//         planeElement.appendChild(el);
-//     }
-// });
