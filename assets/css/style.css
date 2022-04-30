@@ -165,6 +165,7 @@ h3 {
     background-size: cover;
     color: transparent;
     -moz-background-clip: text;
+    background-clip: text;
     -webkit-background-clip: text;
     font-size: 5rem;
     margin: 10px 0;
