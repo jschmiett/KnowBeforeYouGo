@@ -13,6 +13,11 @@ var cityTitle = document.getElementById("userInputCity");
 var priceElements = [1,2,3,4,5].map(i => document.getElementById(`price${i}`));
 var seatsElements = [1,2,3,4,5].map(i => document.getElementById(`seats${i}`));
 
+var historyElement = document.getElementById("history");
+var historyKey = "history";
+var searchHistory = [];
+const maxHistoryCapacity = 5;
+
 //Dummy Array Here
 let planeResults = [
     {
@@ -58,17 +63,30 @@ userCity.addEventListener('keyup',(e)=>{
 
 //Input interface for air quality API here
  function airQualityAPI() {
+    airQualityAPIResults.innerText = '';
     getAQI(userCity.value,aqi=>{
         console.log(aqi)
-        airQualityAPIResults.innerText = "Air quality in " + userCity.value + " is " + aqi + " today";
+        if(aqi === undefined)
+            airQualityAPIResults.innerText = "Unable to find Air quality in " + userCity.value;
+        else
+            airQualityAPIResults.innerText = "Air quality in " + userCity.value + " is " + aqi + " today";
     });
 }
 
 //Input interface for Currency and Exchange Rate here
 function financialInfo() {
+    localCurrencyAPIResults.innerText = '';
+    exchangeRateAPIResults.innerText = '';
     getCurrencyExchangeRate(userCity.value, json=>{
-        localCurrencyAPIResults.innerText = "Local currency is the " + json.new_currency;
-        exchangeRateAPIResults.innerText = `Exchange rate is ${json.new_amount} ${json.new_currency} for ${json.old_amount} ${json.old_currency}`;
+        if('new_amount' in json){
+            localCurrencyAPIResults.innerText = "Local currency is the " + json.new_currency;
+            exchangeRateAPIResults.innerText = `Exchange rate is ${json.new_amount} ${json.new_currency} for ${json.old_amount} ${json.old_currency}`;
+        }
+        else{
+            localCurrencyAPIResults.innerText = "Unable to find local currency for " + userCity.value;
+            exchangeRateAPIResults.innerText = "Unable to find currency exchange information";
+        }
+        
     },
     ()=>{console.log('fetch call failed!')});   
 }
@@ -85,8 +103,12 @@ function getMockData() {
 }
 
 function showPlaneFares(){
-    //getPlanePrices(userCity.value)
-    getMockData()
+    for(let i = 0; i < 5; ++i){
+        priceElements[i].textContent = '';
+        seatsElements[i].textContent = '';
+    }
+    getPlanePrices(userCity.value)
+    //getMockData()
     .then(flights => {
         console.log(flights);
         let nf = Math.min(5, flights.length);
@@ -102,11 +124,58 @@ function showPlaneFares(){
     });
 }
 
+function searchCity(){
+    airQualityAPI();
+    financialInfo();
+    showPlaneFares();
+    let idx = 0;
+        while (idx < searchHistory.length && searchHistory[idx] != userCity.value) ++idx;
+        if (idx < searchHistory.length){
+            searchHistory.splice(idx, 1);
+        }
+        searchHistory.push(userCity.value);
+        if (searchHistory.length > maxHistoryCapacity)
+        searchHistory.shift();
+        window.localStorage.setItem(historyKey, JSON.stringify(searchHistory));
+        updateHistory(searchHistory);
+}
 
-queryButton.addEventListener("click", airQualityAPI);
-queryButton.addEventListener("click", financialInfo);
-//queryButton.addEventListener("click", addCityTitle);
-queryButton.addEventListener("click", showPlaneFares);
+function loadHistory(){
+    searchHistory = JSON.parse(window.localStorage.getItem(historyKey));
+    if(searchHistory === null)
+        searchHistory = [];
+    updateHistory(searchHistory);
+}
+
+function updateHistory(history){
+    removeAllChildren(historyElement);
+    if (history.length > 0){
+        let headerDiv = document.createElement('div');
+        headerDiv.textContent = 'Search history:';
+        headerDiv.className = 'historyItemHeader';
+        historyElement.appendChild(headerDiv);
+    }
+    for(let i = history.length-1; i >= 0; --i){
+        let cityDiv = document.createElement('div');
+        cityDiv.textContent = history[i];
+        cityDiv.className = 'historyItem';
+        cityDiv.addEventListener('click', event=>{
+            userCity.value = event.target.textContent;
+            searchCity();
+        });
+        historyElement.appendChild(cityDiv);
+    }
+}
+
+function removeAllChildren(element){
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+}
+
+loadHistory();
+
+queryButton.addEventListener("click", searchCity);
 
 
 

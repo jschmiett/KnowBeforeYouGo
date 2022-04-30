@@ -34,14 +34,20 @@ function getCountry(city){
         body: JSON.stringify({"city":city})
     })
     .then(response => {
-        return response.json();
+        if (response.status == 200)
+            return response.json();
+        else
+            return {"data":{"country":""}};
     })
     .then(json => {
+        console.log('countryjson:', json);
         return json.data.country;
     });
 }
 
 function getCurrency(country){
+    if (country === "")
+        return new Promise((res, rej) => {res("");});
     return fetch(currencyApiUrl, {
         method: "POST",
         headers: {
@@ -59,6 +65,7 @@ function getCurrency(country){
 }
 
 function getExchangeRate(localCurrency, foreignCurrency){
+    console.log('foregn currency:', foreignCurrency);
     return fetch(`${currencyExchangeApiUrl}?have=${localCurrency}&want=${foreignCurrency}&amount=1`, {
         headers: {
             'X-Api-Key': currencyExchangeApiKey,
@@ -88,8 +95,14 @@ function getAirportCode(city){
         'headers':headers,
         'method':'POST'
     })
-    .then(response => {console.log('response:',response); return response.json()})
-    .then(json => {console.log('<airport>', json, '</airport>');return json.airports[0].iata});
+    .then(response => {return response.json()})
+    .then(json => {
+        if (json.statusCode == 200){
+            console.log('<airport>', json, '</airport>');return json.airports[0].iata;
+        }
+        else
+            return "";
+    });
 }
 
 // API calls
@@ -115,10 +128,17 @@ function getCurrencyExchangeRate(city, onSuccess, onFailure){
 function getPlanePrices(city){
     console.log('get plane prices');
     return getAirportCode(city)
-    .then(airportCode => {console.log('got airport code=',airportCode); return getPlanePricesHelper(localAirportCode,airportCode,moment().add(3, 'month').format('YYYY-MM-DD'), moment().add(3, 'month').add(1,'week').format('YYYY-MM-DD'))})
+    .then(airportCode => {
+        console.log('got airport code=',airportCode);
+        if (airportCode == "")
+            return new Promise((res, rej) => {res({});});
+        else
+            return getPlanePricesHelper(localAirportCode,airportCode,moment().add(3, 'month').format('YYYY-MM-DD'), moment().add(3, 'month').add(1,'week').format('YYYY-MM-DD'));
+    })
     .then(json => {
-        console.log('json:',json);
-
+        console.log('json:',json, json.length);
+        if (!('fares' in json))
+            return [];
         var fares = {};
         var jf = json.fares;
         for (f of jf)
